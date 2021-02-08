@@ -1,1 +1,1 @@
-this site was made by vue3
+this app was made by vue3
