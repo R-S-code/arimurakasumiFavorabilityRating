@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+  <div class="whole-wrapper">
+    <!-- タイトル -->
+    <h1 class="title">有村架純からの好感度、気になる？</h1>
+    <p class="down-arrow">↓</p>
+    <div class="arikasu"><img src="./arikasu.png"></div>
+    
+    <div id="askArikasu"> 
+      <!-- チェックボタン -->
+      <button class="check-btn" v-on:click="askBtn">聞いてみる</button>
+
+      <!-- リザルトローディグウィンドウ -->
+      <div class="result-window-loading" 
+           v-bind:class="{ 'result-window-loading-vanish' : isResultWindow,
+                           'result-window-loading-animation': isLoadingAnimation 
+      }">
+        <div class="loading-heart"><img src=""  id="loading_heart"></div>
+      </div>
+
+      <!-- リザルトウィンドウ -->
+      <div class="result-window" v-bind:class="{ 'result-window-vanish' : isResultWindow }">
+        <h1>有村架純のあなたへの好感度は...</h1>
+        <p class="arikasu-comment">「 {{ comment }} 」</p>
+        <div class="result-arikasu"><img src="./arikasu.png"></div>
+        <p class="favorability-rating"><span class="favorability-rating-num">{{ num }}</span> love</p>  <p class="hanataba-comment">有村架純、菅田将暉主演 「花束みたいな恋をした」1/29から上映。みてね</p>
+        <a href="https://hana-koi.jp/" target="blank"><div class="hanataba"><img src="./hanataba.jpg" alt="花束みたいな恋をした"></div></a>
+        <p>※画像をクリックすると別タブで開きます</p>
+        <button class="again-btn"  v-on:click="playAgain">もう一度やってみる</button>
+      </div>
+    </div>
+  </div>
+<script>
+Vue.createApp({
+  data() {
+    return {
+      isResultWindow: true,
+      isLoadingAnimation: false,
+      num: 0,
+      comment: "",
+    } 
+  },
+  methods: {
+    judgeNum: function() {
+      if(this.num >= 100 ) {
+        this.comment = "すっごい好き";
+      } else if(this.num > 70) {
+        this.comment > "好きだよ";
+      } else if(this.num > 40) {
+        this.comment = "私たち仲はいいよね";
+      } else {
+        this.comment = "友達からでいいですか？"
+      }
+    },
+    askBtn: function () {
+      document.getElementById("loading_heart").setAttribute('src', './gif.gif');
+      if(this.isResultWindow === true) {
+        this.isResultWindow = false;
+        this.isLoadingAnimation = true;
+        this.num = Math.floor(Math.random() * 120);
+        this.judgeNum();
+        scrollTo(0, 0);
+      } 
+    },
+    playAgain: function() {
+      document.getElementById("loading_heart").setAttribute('src', '');
+      this.isResultWindow = true;
+      this.isLoadingAnimation = false;
+      scrollTo(0, 0);
+    }
+  }
+}).mount("#askArikasu")
+</script>
+</body>
+</html>
+  
