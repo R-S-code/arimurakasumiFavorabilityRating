@@ -11,12 +11,20 @@ html {
 }
 @media screen and (max-width:750px) { 
   html {
-    background-image: url('./bg.png');
-    background-attachment: fixed;
-    background-position: bottom;
-    background-repeat: no-repeat;
-    background-size: contain;
+    background-image: none;
   }
+  html::before {
+    background: url("./bg.png") no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    content:"";
+    height:100vh;
+    left:0;
+    position:fixed;
+    top:0;
+    width:100vw;
+    z-index:-1;
+}
 }
 body {
   font-family: 'beautifulFont';
