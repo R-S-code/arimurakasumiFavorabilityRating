@@ -6,8 +6,17 @@
 html {
   background-image: url('./bg.png');
   background-attachment: fixed;
-  background-position: center;
+  background-position: bottom;
   background-size: cover;
+}
+@media screen and (max-width:750px) { 
+  html {
+    background-image: url('./bg.png');
+    background-attachment: fixed;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
 }
 body {
   font-family: 'beautifulFont';
@@ -49,6 +58,12 @@ body {
 .arikasu img {
   animation: ArikasuMove 1.8s steps(1, start) infinite;
   width: 320px;
+}
+@media screen and (max-width:750px) { 
+  .arikasu img {
+    animation: ArikasuMove 1.8s steps(1, start) infinite;
+    width: 65vw;
+  }
 }
 
 /* チェック */

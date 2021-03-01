@@ -49,24 +49,32 @@ Vue.createApp({
     } 
   },
   methods: {
+    generateFavNum: function() {
+      try {
+        this.num = Math.floor(Math.random() * 120);
+      } 
+      catch (e) {
+        console.log("Math.random()エラー!");
+      }
+    },
     judgeNum: function() {
       if(this.num >= 100 ) {
         this.comment = "すっごい好き";
-      } else if(this.num > 70) {
+      } else if(this.num >= 65) {
         this.comment > "好きだよ";
-      } else if(this.num > 40) {
+      } else if(this.num >= 35) {
         this.comment = "私たち仲はいいよね";
       } else {
-        this.comment = "友達からでいいですか？"
+        this.comment = "友達からでいいですか？";
       }
     },
     askBtn: function () {
       document.getElementById("loading_heart").setAttribute('src', './gif.gif');
       if(this.isResultWindow === true) {
+        this.generateFavNum();
+        this.judgeNum(); 
         this.isResultWindow = false;
         this.isLoadingAnimation = true;
-        this.num = Math.floor(Math.random() * 120);
-        this.judgeNum();
         scrollTo(0, 0);
       } 
     },
