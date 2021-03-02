@@ -20,11 +20,11 @@ html {
     content:"";
     height:100vh;
     left:0;
-    position:fixed;
+    position: fixed;
     top:0;
     width:100vw;
     z-index:-1;
-}
+  }
 }
 body {
   font-family: 'beautifulFont';
@@ -157,6 +157,11 @@ body {
 }
 .result-arikasu img {
   width: 320px;
+}
+@media screen and (max-width:750px) { 
+  .result-arikasu img {
+    width: 65vw;
+  }
 }
 .favorability-rating {
   border: 1px solid pink;
