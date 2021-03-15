@@ -61,7 +61,7 @@ Vue.createApp({
       if(this.num >= 100 ) {
         this.comment = "すっごい好き";
       } else if(this.num >= 65) {
-        this.comment > "好きだよ";
+        this.comment = "好きだよ";
       } else if(this.num >= 35) {
         this.comment = "私たち仲はいいよね";
       } else {
@@ -72,7 +72,11 @@ Vue.createApp({
       document.getElementById("loading_heart").setAttribute('src', './gif.gif');
       if(this.isResultWindow === true) {
         this.generateFavNum();
-        this.judgeNum(); 
+        console.log(this.num);
+        setTimeout(()=> {
+          this.judgeNum();
+          console.log(this.comment);
+        }, 1000);
         this.isResultWindow = false;
         this.isLoadingAnimation = true;
         scrollTo(0, 0);
